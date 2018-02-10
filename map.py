@@ -7,16 +7,23 @@ class MapTile:
 		raise NotImplementedError("Create a subclass instead!")
 
 
-class StartTile(MapTile):
+class SpawnTile(MapTile):
 	def intro_text(self):
-		return """You find yourself in a cave with a flickering torch on the wall.
-		You can make out four paths, each equally as dark and foreboding.
+		return """You wake up in your cabin. Not everthing comes back to you.
+        All you remember is a mechanic, alarms, and a crash.
+        There is a bright in the room. As you look around you realize you are in
+        a space station.
 		"""
 
 
-class BoringTile(MapTile):
+class WorkTile(MapTile):
 	def intro_text(self):
-		return """This is a very boring part of the cave."""
+		return """You are in a massive room: the work station. There are many cubicles, mini- lab stations
+        and papers all over the floor. The light is flickering. """
+
+class ContRoomTile(MapTile):
+	def intro_text(self):
+		return """This is the control room. You see """
 
 
 class VictoryTile(MapTile):
@@ -28,10 +35,10 @@ class VictoryTile(MapTile):
 
 class World:									# I choose to define the world as a class. This makes it more straightforward to import into the game.
 	map = [
-		[None, VictoryTile(), None],
-		[None, BoringTile(), None],
-		[BoringTile(), StartTile(), BoringTile()],
-		[None, BoringTile(), None]
+		[None,                VictoryTile(),      None],
+		[None,                BoringTile(),       None],
+		[BoringTile(),        SpawnTile(),        BoringTile()],
+		[None,                BoringTile(),       None]
 	]
 
 	def __init__(self):
