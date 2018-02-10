@@ -10,4 +10,4 @@ class Pipe(Weapon):
         self.description = "A jagged brass pipe from a broken piping system."
         self.damage = 50
 
-class Knife(Weap)
+class Knife(Weapon)
