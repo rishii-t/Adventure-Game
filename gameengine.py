@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+
+=======
 def play():
 	clear_screen()
 	print_wrap("Welcome to %s!" % game_name)
@@ -106,3 +109,4 @@ def print_wrap(text):
 
 ### Play the game.
 play()
+>>>>>>> e40af553f1bfc52089f7002659c126095a318f4a

@@ -1,8 +1,4 @@
-print ("Hello\n")
-name = input("Hello")
-print ("Hello" + name + , + "\nWelcome to the Game")
-print ("")
-
+print ("Hello!")
 
 
 
