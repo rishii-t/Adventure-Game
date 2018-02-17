@@ -1,6 +1,28 @@
-<<<<<<< HEAD
+from random import randint 	# Used to generate random integers.
 
-=======
+from textwrap import fill	# Gives us a tool for formatting text in a much prettier fashion.
+from textwrap import dedent	# Strips extra tabs off of ugly, ugly multiline strings.
+
+from terminalsize import get_terminal_size		# Allows us to determine terminal window size on any OS.
+												# Adapted for Python 3.x from https://gist.github.com/jtriley/1108174
+
+from player import Player
+from world import World
+import parse
+
+debug_mode = True	# Use this to toggle verbose mode on the text parser.
+
+game_name = "Escape from Cave Terror, v2"
+
+help_text = "To interact with this game world, you will use a basic text-based interface. \
+Try single-word commands like 'inventory' or 'west' (or their abbreviations, 'i' or 'w', respectively \
+to get started. For more complex interactions, use commands of the format [VERB][NOUN] (e.g. 'open door', \
+or in some cases, [VERB][NOUN][OBJECT] (e.g. 'attack enemy with knife').\
+The game will ignore the articles 'a', 'an', and 'the' (e.g. 'open the door' is the same as 'open door.').\n\n\
+To exit the game at any time, type 'exit' or 'quit'."
+
+wrap_width = 0								# We will eventually use this so that we can wrap text.
+
 def play():
 	clear_screen()
 	print_wrap("Welcome to %s!" % game_name)
@@ -71,11 +93,14 @@ def play():
 
 
 			if(debug_mode):
-				for word in parsed_input:
-					if(word):
-						print(word + " ")
-					else:
-						print("None")
+				print()
+				print("RAW USER COMANDS: " + raw_input)
+				print("PARSED USER COMMANDS: " + str(parsed_input))
+				#for word in parsed_input:
+				#	if(word):
+				#		print(word + " ")
+				#	else:
+				#		print("None")
 		else:
 			print("Something seems to have gone wrong. Please try again.")
 
@@ -103,10 +128,9 @@ def clear_screen():
 
 def print_wrap(text):
 	get_width()
-	text = text.replace("\t", "")
+	text = dedent(text)
 	print(fill(text, wrap_width))
 
 
 ### Play the game.
 play()
->>>>>>> e40af553f1bfc52089f7002659c126095a318f4a
