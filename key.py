@@ -9,16 +9,16 @@ class K1(Key):
     self.name = "First acquirable key. Shows the number 1."
 
 class K2(Key):
-    self.name = "First acquirable key. Shows the number 1."
+    self.name = "Second acquirable key. Shows the number 1."
 
 class K3(Key):
-    self.name = "First acquirable key. Shows the number 9."
+    self.name = "Third acquirable key. Shows the number 9."
 
 class K4(Key):
-    self.name = "First acquirable key. Shows the number 5."
+    self.name = "Fourth acquirable key. Shows the number 5."
 
 class K5(Key):
-    self.name = "First acquirable key. Shows the number 4."
+    self.name = "Fifth acquirable key. Shows the number 4."
 
 class K6(Key):
-    self.name = "First acquirable key. Shows the number 2."
+    self.name = "Sixth acquirable key. Shows the number 2."
