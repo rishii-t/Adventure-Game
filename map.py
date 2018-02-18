@@ -11,8 +11,8 @@ class SpawnTile(MapTile):
 	def intro_text(self):
 		return """You wake up in your cabin. Not everthing comes back to you.
         All you remember is a mechanic, alarms, and a crash.
-        There is a bright in the room. As you look around you realize you are in
-        a space station.
+        There is a bright in the room. As you look out the window you realize you are in
+        a space station!
 		"""
 
 
@@ -37,60 +37,82 @@ class Recreation(MapTile):
 		return """You are in a small room filled with work-out equipment. On the floor there is a
 		a leather jacket with a label 'Scott Clarke' . The jacket has
 		blood stains.   """
+
+class Ellis(MapTile):
+	def intro_text(self):
+		return """There is a computer screen in the distance. As you approach it lights up at says
+		'Hello! My name is E.L.L.I.S. I am the computer systems module that runs
+		in this facility.' """
+
 class Basement(MapTile):
 	def intro_text(self):
-		return """Basement   """
+		return """ You enter a dark room. In here are scattered tools and remains across the floor
+		that you cannot identify. In the east corner there is a box labeled WIRES. On
+		the west corner there is a minfridge.  """
 
 class EastHall(MapTile):
 	def intro_text(self):
-		return """EastHall   """
+		return """You are in the East Hall. The hall has pipes and wires running on it's walls.  """
 
 class SouthHall(MapTile):
 	def intro_text(self):
-		return """SouthHall  """
+		return """You are in the South Hall. The hall has pipes and wires running on it's walls.
+		Yet, there is something very strange about the south hall. It is almost as if
+		everything is offset.  """
 
 class NorthHall(MapTile):
 	def intro_text(self):
-		return """NorthHall   """
+		return """You are in the North Hall. The hall has pipes and wires running on it's walls.  """
 
 
-class VictoryTile(MapTile):
+class Laboratory(MapTile):
 	def intro_text(self):
-		return """You see a bright light in the distance...
-		It grows as you get closer! It's sunlight!
-		Victory is yours!
+		return """You are in a Laboratory. There is giant telescope in the corner.
+		There are also rows of counters with different lab equipment you cannot idenitfy.
+		Most of the cabinets underneath the counters are broken. However, there is one counter that
+		is strangly clean and it's cabinets are locked.
 		"""
 class WasteRoom(MapTile):
 	def intro_text(self):
-		return """ WasteRoom   """
+		return """ There are pipes and tubing everywhere. In the center there is
+		giant tank, most probably where the waste is recycled. For some reason, the system
+		display is stuck on a random screen. The stench is also horrible and their
+		is waste on the floor.  """
 
 class ETP(MapTile):
 	def intro_text(self):
-		return """ ETP   """
+		return """You are in the ETP, the Exit Transport Pod. Unfortunately, the pod is locked.
+		It seems as if the door had been manually locked.  """
 
 class RocketPad(MapTile):
 	def intro_text(self):
-		return """RP   """
+		return """You are in the Rocket Pad Chamber. There is a gigantic platform in the center.
+		The ceiling consists of a series of metal plates that seem to be interconnected with
+		each other.   """
 
 class RocketPadReal(MapTile):
 	def intro_text(self):
-		return """RP Real  """
+		return """You are in the Rocket Pad Chamber. There is a gigantic platform in the center.
+		The ceiling consists of a series of metal plates that seem to be interconnected with
+		each other.  There is a robot in the corner that seems to be disabled. Try to turn it on. """
 
 class WorkRoom(MapTile):
 	def intro_text(self):
-		return """Work WorkRoom   """
+		return """You are in the mainframe of this Space Base. There a rows of computers, desks, and cubicles lined across.
+		The computer systems all show the same error message. There are papers scattered everywhere. In the center of the
+		room is a gigantic hologram model of the space base. The model seems to display where everthing is.  """
 
 class World:									# I choose to define the world as a class. This makes it more straightforward to import into the game.
 	map = [
-		[Basement(), 		None,		None,		None,			None, 			None, 			SpawnTile(), 	None, 		None, None],
-		[None, 				None,		None,		None, 			None, 			None, 			NorthHall(), 	None, 		None, None],
-		[None,				None,		None,		None, 			WorkRoom(), 	WorkRoom(), 	WorkRoom(), 	WorkRoom(), None, None],
-		[RocketPadReal(),	EastHall(), RocketPad(),EastHall(), 	WorkRoom(), 	WorkRoom(), 	WorkRoom(), 	WorkRoom(), None, None],
-		[None,				None,		None,		None, 			WorkRoom(), 	WorkRoom(), 	WorkRoom(), 	WorkRoom(), None, None],
-		[None,				None,		None,		None, 			SouthHall(), 	None, 			SouthHall(), 	None, 		None, None],
-		[None,				None,		None,		None, 			WasteRoom(), 	None, 			ETP(), 			None, 		None, None],
-		[None, 				None,		None,		None, 			None, 			None, 			ETP(),			None, 		None, None],
-		[None, 				None,		None,		None, 			None, 			None, 			ETP(),			None, 		None, None],
+		[Basement(), 		None,		None,		None,			None, 			LivingQuarters(), 	SpawnTile(), 	LivingQuarters(), 	None, 			None],
+		[None, 				None,		None,		None, 			Recreation(), 	None, 				NorthHall(), 	None, 				None, 			None],
+		[None,				None,		None,		None, 			WorkRoom(), 	WorkRoom(), 		WorkRoom(), 	WorkRoom(), 		ContRoomTile(), None],
+		[RocketPadReal(),	EastHall(), RocketPad(),EastHall(), 	WorkRoom(), 	WorkRoom(), 		WorkRoom(), 	WorkRoom(), 		None, 			None],
+		[None,				None,		None,		Laboratory(), 	WorkRoom(), 	WorkRoom(), 		WorkRoom(), 	WorkRoom(), 		Ellis(), 			None],
+		[None,				None,		None,		Laboratory(), 	SouthHall(), 	None, 				SouthHall(), 	None, 				None, 			None],
+		[None,				None,		None,		None, 			WasteRoom(), 	None, 				ETP(), 			None, 				None, 			None],
+		[None, 				None,		None,		None, 			None, 			None, 				ETP(),			None, 				None, 			None],
+		[None, 				None,		None,		None, 			None, 			None, 				ETP(),			None, 				None, 			None],
 	]
 
 	def __init__(self):
