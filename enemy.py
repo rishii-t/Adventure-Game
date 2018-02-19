@@ -4,16 +4,18 @@ class Enemy:
 
 	def __str__(self):
 		return self.name
+		return self.description
 
 	def is_alive(self):
 		return self.hp > 0
 
 
-class GiantSpider(Enemy):
+class Doggerman(Enemy):
 	def __init__(self):
-		self.name = "Giant Spider"
-		self.hp = 10
-		self.damage = 2
+		self.name = "Doggerman"
+		self.description = "Has a peculiar face that splits into five petals with teeth. Built with a humanoid body."
+		self.hp = 100
+		self.damage = 10
 
 
 class Ogre(Enemy):
