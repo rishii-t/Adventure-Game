@@ -106,12 +106,12 @@ class LockedDoor(Barrier):
 							if(inventory[index].name.lower() == 'iron key'):
 								inventory.pop(index)	# Removes the item at this index from the inventory.
 								self.locked = False
-								return [True, "You insert the iron key into the padlock and twist. The padlock falls free with a clang.", inventory]
-						return [True, "You don't seem to have the right key for that door.", inventory]
+								return [True, "You enter the key code into the door beeps. THe door opens with a whoosh.", inventory]
+						return [True, "You don't seem to have the right keycode for that door.", inventory]
 					elif(noun2 == 'key'):
 						return [True, "Be more specific. This door only takes a specific key.", inventory]
 					else:
-						return [True, "What item do you plan to unlock that door with?", inventory]
+						return [True, "What numbers do you plan to enter into the keypad with?", inventory]
 				else:
 					return [True, "The door is already unlocked.", inventory]
 
