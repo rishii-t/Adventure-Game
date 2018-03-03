@@ -85,7 +85,6 @@ class OpSword(Item):
         damage = 1000000000000000
 
 
-
 class HandCannon(Item):
     def __init(self):
         name = "Hand Cannon"
@@ -93,13 +92,15 @@ class HandCannon(Item):
         dropped_description = "There is a huge gun on the ground."
         damage = 90
 
+
 class Consumable(Item):
 	consume_description = "You should define flavor text for consuming this item in its subclass."
+    dropped_description = "Flavor text"
 
 	healing_value = 0		# Define this appropriately in your subclass.
 
 	def consume(self):
-		return [self.consume_description, self.healing_value]
+		return [self.consume_description, self.dropped_description, self.healing_value]
 
 
 class EnergyDrink(Consumable):
@@ -109,3 +110,9 @@ class EnergyDrink(Consumable):
 	description = " An Energy Drink from your local SpaceMart. It doesn't look expired"
 	dropped_description = "An Energy Drink is on the ground."
 	consume_description = "You drink the Energy Drink."
+
+class Key(Item):
+    description = "flavor text"
+
+	def consume(self):
+		return [self.description]

@@ -77,7 +77,7 @@ class VirusBot(Enemy):
 	agro = True
 
 class ComputerVirus(Enemy):
-	name = "Colony of bats"
+	name = "Bleh"
 	description = "The  Computer Virus that has locked you in"
 	hp = 3000
 	damage = 0
@@ -85,7 +85,7 @@ class ComputerVirus(Enemy):
 
 
 class Slime(Enemy):
-	name = "Rock Monster"
+	name = "Slime"
 	description = "A slimey virus created in the Research Lab."
 	hp = 180
 	damage = 15

@@ -120,17 +120,29 @@ class Recreation(MapTile):
 		a leather jacket with a label 'Scott Clarke' . The jacket has
 		blood stains.   """
 
+		def random_spawn(self):
+		if(randint(0,1) == 0):		# 1 in 2 odds.
+			self.enemies = [enemies.VirusBot()]
+		else:
+			self.enemies = []
+
 class Ellis(MapTile):
 	def intro_text(self):
 	 	description = """There is a computer screen in the distance. As you approach it lights up at says
 		'Hello! My name is E.L.L.I.S. I am the computer systems module that runs
 		in this facility.' """
 
+		def random_spawn(self):
+		if(randint(0,0) == 0):		# 1 in 2 odds.
+			self.enemies = [enemies.VirusBot()]
+		else:
+			self.enemies = []
+
 class Basement(MapTile):
 	def intro_text(self):
-		items = [Item.OpSword("There is a sword leaning on the wall. You shouldn't take it;)")
-				 Item.HandCannon("There is a pistol on the shelf")
-				 Consumable.EnergyDrink("There is an energy drink in the mini fridge")]
+		items = [Item.OpSword("There is a sword leaning on the wall. You shouldn't take it")
+				 	Item.HandCannon("There is a hand cannon on the shelf")
+				 	Consumable.EnergyDrink("There is an energy drink in the mini fridge")]
 		description = """ You enter a dark room. In here are scattered tools and remains across the floor
 		that you cannot identify. In the east corner there is a box labeled WIRES. On
 		the west corner there is a minfridge.  """
@@ -152,10 +164,10 @@ class NorthHall(MapTile):
 
 class Laboratory(MapTile):
 	def intro_text(self):
+		enemies = [enemy.slime]
 		description = """You are in a Laboratory. There is giant telescope in the corner.
 		There are also rows of counters with different lab equipment you cannot idenitfy.
-		Most of the cabinets underneath the counters are broken. However, there is one counter that
-		is strangly clean and it's cabinets are locked.
+		Most of the cabinets underneath the counters are broken. However, there is one counter that is covered in green slime and it's cabinets are locked.
 		"""
 class WasteRoom(MapTile):
 	def intro_text(self):
@@ -164,6 +176,11 @@ class WasteRoom(MapTile):
 		display is stuck on a random screen. The stench is also horrible and their
 		is waste on the floor.  """
 
+ 		def random_spawn(self):
+		if(randint(0,1) == 0):		# 1 in 2 odds.
+			self.enemies = [enemies.VirusBot()]
+		else:
+			self.enemies = []
 class ETP(MapTile):
 	def intro_text(self):
 		description = """You are in the ETP, the Exit Transport Pod. Unfortunately, the pod is locked.
@@ -171,6 +188,7 @@ class ETP(MapTile):
 
 class RocketPad(MapTile):
 	def intro_text(self):
+		enemies = [enemy.Demogorgon]
 		description = """You are in the Rocket Pad Chamber. There is a gigantic platform in the center.
 		The ceiling consists of a series of metal plates that seem to be interconnected with
 		each other.   """
@@ -186,6 +204,12 @@ class MainDeck(MapTile):
 		description = """You are in the mainframe of this Space Base. There a rows of computers, desks, and cubicles lined across.
 		The computer systems all show the same error message. There are papers scattered everywhere. In the center of the
 		room is a gigantic hologram model of the space base. The model seems to display where everthing is.  """
+
+		def random_spawn(self):
+		if(randint(0,2) == 0):		# 1 in 2 odds.
+			self.enemies = [enemies.VirusBot()]
+		else:
+			self.enemies = []
 
 class World:									# I choose to define the world as a class. This makes it more straightforward to import into the game.
 	map = [
