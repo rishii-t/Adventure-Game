@@ -1,4 +1,4 @@
-from terminalsize import get_terminal_size					# Allows us to determine terminal window size on any OS.
+from terminalize import get_terminal_size					# Allows us to determine terminal window size on any OS.
 															# Adapted for Python 3.x from https://gist.github.com/jtriley/1108174
 
 import textwrap	# Gives us tools for formatting text in a much prettier fashion.
