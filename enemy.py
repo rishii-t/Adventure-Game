@@ -65,12 +65,13 @@ class Demogorgon(Enemy):
 	description = "A scary alien-looking creature"
 	hp = 10
 	damage = 2
+	loot = [items.K2("Within the remains of the Demogorgon you find another key")]
 
 
 class VirusBot(Enemy):
 	name = "VirusBot"
 	description = "A robot engaged by the virus."
-	hp = 30
+	hp = 300
 	damage = 10
 
 	agro = True
@@ -78,7 +79,7 @@ class VirusBot(Enemy):
 class ComputerVirus(Enemy):
 	name = "Colony of bats"
 	description = "The  Computer Virus that has locked you in"
-	hp = 100
+	hp = 3000
 	damage = 0
 
 
@@ -86,6 +87,6 @@ class ComputerVirus(Enemy):
 class Slime(Enemy):
 	name = "Rock Monster"
 	description = "A slimey virus created in the Research Lab."
-	hp = 80
+	hp = 180
 	damage = 15
-	loot = [items.Iron_Key("Within the remains of the virus you find the key to the locker")]
+	loot = [items.K1("Within the remains of the virus you find the key to the locker")]
