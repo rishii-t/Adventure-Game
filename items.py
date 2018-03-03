@@ -94,18 +94,16 @@ class HandCannon(Item):
 
 
 class Consumable(Item):
-	consume_description = "You should define flavor text for consuming this item in its subclass."
-
+    consume_description = "You should define flavor text for consuming this item in its subclass."
     healing_value = 0
 
-	def consume(self):
-		return [self.consume_description, self.dropped_description, self.healing_value]
+    def consume(self):
+        return [self.consume_description, self.dropped_description, self.healing_value]
 
 
 class EnergyDrink(Consumable):
 	name = "red potion"
 	healing_value = 75
-
 	description = " An Energy Drink from your local SpaceMart. It doesn't look expired"
 	dropped_description = "An Energy Drink is on the ground."
 	consume_description = "You drink the Energy Drink."
@@ -113,5 +111,5 @@ class EnergyDrink(Consumable):
 class Key(Item):
     description = "flavor text"
 
-	def consume(self):
-		return [self.description]
+    def consume(self):
+        return [self.description]

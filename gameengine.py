@@ -2,7 +2,7 @@ from formattext import *				# Import some important functions for formatting tex
 
 
 from player import Player
-from map import Map
+from map import World
 import parse
 
 debug_mode = True	# Use this to toggle verbose mode on the text parser.
@@ -21,12 +21,13 @@ victory_text = ["Thank you for playing!", \
 				"I look forward to seeing the games you create using this as an example!"]
 
 player = Player()
-map = Map()
+map = World()
+
 
 def play():
 	print_welcome_text()
 
-	print_wrap(MapTile.tile_at(player.x,player.y).intro_text())
+	print_wrap(map.tile_at(player.x,player.y).intro_text())
 
 	while True:
 		print()							# Print a blank line for spacing purposes.
@@ -91,34 +92,34 @@ def handle_input(verb, noun1, noun2):
 	elif(verb == 'go'):
 		if(not noun2):
 			if(noun1 == 'north'):
-				[move_status, move_description] = MapTile.check_north(player.x, player.y)
+				[move_status, move_description] = map.check_north(player.x, player.y)
 				if(move_status):
 					player.move_north()
-					return [move_description, MapTile.tile_at(player.x, player.y).intro_text()]
+					return [move_description, map.tile_at(player.x, player.y).intro_text()]
 				else:
 					return move_description
 
 			elif(noun1 == 'south'):
-				[move_status, move_description] = MapTile.check_south(player.x, player.y)
+				[move_status, move_description] = map.check_south(player.x, player.y)
 				if(move_status):
 					player.move_south()
-					return [move_description, MapTile.tile_at(player.x, player.y).intro_text()]
+					return [move_description, map.tile_at(player.x, player.y).intro_text()]
 				else:
 					return move_description
 
 			elif(noun1 == 'east'):
-				[move_status, move_description] = MapTile.check_east(player.x, player.y)
+				[move_status, move_description] = map.check_east(player.x, player.y)
 				if(move_status):
 					player.move_east()
-					return [move_description, MapTile.tile_at(player.x, player.y).intro_text()]
+					return [move_description, map.tile_at(player.x, player.y).intro_text()]
 				else:
 					return move_description
 
 			elif(noun1 == 'west'):
-				[move_status, move_description] = MapTile.check_west(player.x, player.y)
+				[move_status, move_description] = map.check_west(player.x, player.y)
 				if(move_status):
 					player.move_west()
-					return [move_description, MapTile.tile_at(player.x, player.y).intro_text()]
+					return [move_description, map.tile_at(player.x, player.y).intro_text()]
 				else:
 					return move_description
 
@@ -132,7 +133,7 @@ def handle_input(verb, noun1, noun2):
 	elif(verb == 'check'):
 		if(not noun2):
 			if(noun1 == None or noun1 == 'around' or noun1 == 'room' or noun1 == 'surroundings'):
-				return MapTile.tile_at(player.x, player.y).intro_text()
+				return map.tile_at(player.x, player.y).intro_text()
 			elif(noun1 == 'inventory' or noun1 == 'pockets'):
 				player.print_inventory();
 				return ''	# No need to return any text because the player.print_inventory() function already did.
@@ -141,7 +142,7 @@ def handle_input(verb, noun1, noun2):
 				if(status):
 					return description
 				else:
-					[status, description, inventory] = MapTile.tile_at(player.x, player.y).handle_input(verb, noun1, noun2, player.inventory)
+					[status, description, inventory] = map.tile_at(player.x, player.y).handle_input(verb, noun1, noun2, player.inventory)
 					if(status):
 						return description
 					else:
@@ -156,7 +157,7 @@ def handle_input(verb, noun1, noun2):
 		if(status):
 			return description
 		else:
-			[status, description, inventory] = MapTile.tile_at(player.x, player.y).handle_input(verb, noun1, noun2, player.inventory)
+			[status, description, inventory] = map.tile_at(player.x, player.y).handle_input(verb, noun1, noun2, player.inventory)
 			if(status):
 				player.inventory = inventory
 				return description

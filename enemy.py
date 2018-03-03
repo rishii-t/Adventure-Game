@@ -65,7 +65,6 @@ class Demogorgon(Enemy):
 	description = "A scary alien-looking creature"
 	hp = 10
 	damage = 2
-	loot = [items.K2("Within the remains of the Demogorgon you find another key")]
 
 
 class VirusBot(Enemy):
@@ -89,4 +88,3 @@ class Slime(Enemy):
 	description = "A slimey virus created in the Research Lab."
 	hp = 180
 	damage = 15
-	loot = [items.K1("Within the remains of the virus you find the key to the locker")]
