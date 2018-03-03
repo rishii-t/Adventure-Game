@@ -108,8 +108,18 @@ class EnergyDrink(Consumable):
 	dropped_description = "An Energy Drink is on the ground."
 	consume_description = "You drink the Energy Drink."
 
-class Key(Item):
-    description = "flavor text"
-
+class Key1(Item):
+	name = "key 1"
+    description = "flavor text
+    def consume(self):
+        return [self.description]
+class Key2(Item):
+	name = "key 2"
+    description = "flavor text
+    def consume(self):
+        return [self.description]
+class Key3(Item):
+	name = "key 3"
+    description = "flavor text
     def consume(self):
         return [self.description]
