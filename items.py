@@ -42,7 +42,7 @@ class Item:
 		return [False, None, inventory]
 
 
-class Pipe(Weapon):
+class Pipe(Item):
     def __init(self):
         name = "Brass Pipe"
         description = "A jagged brass pipe from a broken piping system."
@@ -52,7 +52,7 @@ class Pipe(Weapon):
 
 
 
-class Knife(Weapon):
+class Knife(Item):
     def __init(self):
         name = "Knife"
         description = "It's not an actual knife, instead its a jagged piece of metal you found in someones body."
@@ -61,7 +61,7 @@ class Knife(Weapon):
 
 
 
-class DemogorganTeeth(Weapon):
+class DemogorganTeeth(Item):
     def __init(self):
         name = "Dem Teeth"
         descirption = 'Teeth from a Doggerman. Etching in the handle says "use Wordplays"'
@@ -69,7 +69,7 @@ class DemogorganTeeth(Weapon):
         damage = 10
 
 
-class Gun(Weapon):
+class Gun(Item):
     def __init(self):
         name = "Snake Gun"
         description = "Gun that shoots black worms that crawl into the enemies mouth. Proceeds to eat the inside of the enemy. Yum"
@@ -77,7 +77,7 @@ class Gun(Weapon):
         damage = 60
 
 
-class OpSword(Weapon):
+class OpSword(Item):
     def __init(self):
         name = "Ironically Op Sword"
         description = "Read the name"
@@ -86,9 +86,26 @@ class OpSword(Weapon):
 
 
 
-class HandCannon(Weapon):
+class HandCannon(Item):
     def __init(self):
         name = "Hand Cannon"
         description = "A cannon that was shrunk to fit a human hand"
         dropped_description = "There is a huge gun on the ground."
         damage = 90
+
+class Consumable(Item):
+	consume_description = "You should define flavor text for consuming this item in its subclass."
+
+	healing_value = 0		# Define this appropriately in your subclass.
+
+	def consume(self):
+		return [self.consume_description, self.healing_value]
+
+
+class EnergyDrink(Consumable):
+	name = "red potion"
+	healing_value = 75
+
+	description = " An Energy Drink from your local SpaceMart. It doesn't look expired"
+	dropped_description = "An Energy Drink is on the ground."
+	consume_description = "You drink the Energy Drink."

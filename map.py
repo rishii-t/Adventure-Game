@@ -108,7 +108,7 @@ class LivingQuarters(MapTile):
 
 class ContRoomTile(MapTile):
 	def intro_text(self):
-		items = [Weapons.Gun("The is a gun on the control panel. Have fun")]
+		items = [Item.Gun("The is a gun on the control panel. Have fun")]
 		description = """This is the control room. You see hundreds of pipes running in different directions.
 		There is a low hiss and a broken copper pipe in the corner. In the back corner of the room,
 		there are dials spinning in crazy directions. On your left you see a red lever and above it that says
@@ -128,8 +128,9 @@ class Ellis(MapTile):
 
 class Basement(MapTile):
 	def intro_text(self):
-		items = [Weapons.OpSword("There is a sword leaning on the wall. You shouldn't take it;)")
-					Weapons.HandCannon("The is a pistol on the shelf")]
+		items = [Item.OpSword("There is a sword leaning on the wall. You shouldn't take it;)")
+					Item.HandCannon("The is a pistol on the shelf")
+					Consumable.EnergyDrink("There is an energy drink in the mini fridge")]
 		description = """ You enter a dark room. In here are scattered tools and remains across the floor
 		that you cannot identify. In the east corner there is a box labeled WIRES. On
 		the west corner there is a minfridge.  """
