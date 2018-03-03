@@ -72,9 +72,9 @@ class LockedDoor(Barrier):
 	def description(self):
 		if(self.state == 'closed'):
 			if(self.locked):
-				return "An imposing door with a large iron padlock blocks a passageway to the %s." % self.direction
+				return "An imposing door with a lock blocks a passageway to the %s." % self.direction
 			else:
-				return "An imposing door blocks a passageway to the %s. A large iron padlock which once held it shut lies on the ground beside it." % self.direction
+				return "An imposing door blocks a passageway to the %s. " % self.direction
 		else:
 			return "An imposing door lies open before you to the %s." % self.direction
 
@@ -85,31 +85,31 @@ class LockedDoor(Barrier):
 			if(verb == 'open'):
 				if(self.state == 'closed'):
 					if(self.locked):
-						return [True, "You try to open the door, but the padlock holds it firmly shut. You need to unlock it first.", inventory]
+						return [True, "You try to open the door, but a lock holds it firmly shut. You need to unlock it first with the 3 keys.", inventory]
 					else:
 						self.state = 'open'
 						self.passable = True
 						return [True, "You heave the once-locked door open.", inventory]
 				else:
 					return [True, "The door is already open.", inventory]
-			if(verb == 'close'):
-				if(self.state == 'open'):
-					self.state = 'closed'
-					self.passable = False
-					return [True, "You push the massive door closed.", inventory]
-				else:
-					return [True, "The door is already closed.", inventory]
+		#	if(verb == 'close'):
+		#		if(self.state == 'open'):
+			#		self.state = 'closed'
+		#			self.passable = False
+			#		return [True, "You push the massive door closed.", inventory]
+			#	else:
+			#		return [True, "The door is already closed.", inventory]
 			if(verb == 'unlock'):
 				if(self.locked):
-					if(noun2 == 'iron key'):
+					if(noun2 == 'keys'):
 						for index in range(len(inventory)):
-							if(inventory[index].name.lower() == 'iron key'):
+							if(inventory[index].name.lower() == 'key 1' and inventory[index].name.lower() ==  'key 2' and inventory[index].name.lower() == 'key 3'):
 								inventory.pop(index)	# Removes the item at this index from the inventory.
 								self.locked = False
-								return [True, "You insert the iron key into the padlock and twist. The padlock falls free with a clang.", inventory]
-						return [True, "You don't seem to have the right key for that door.", inventory]
+								return [True, "You insert the 3 keys into the lock and twist. The door opens by itself.", inventory]
+						return [True, "You don't seem to have all the keys for that door.", inventory]
 					elif(noun2 == 'key'):
-						return [True, "Be more specific. This door only takes a specific key.", inventory]
+						return [True, "Be more specific. Note: Enter the phrase 'keys' if you have all the keys. Otherwise, you will not be able to open the door", inventory]
 					else:
 						return [True, "What item do you plan to unlock that door with?", inventory]
 				else:
