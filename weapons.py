@@ -1,9 +1,17 @@
+from random import randint
 class Weapon:
-    def __init__(self):
-        raise NotImplementedError("Do not create a raw Weapon objects")
+    equip_description = "You should define flavor text for equipping this item in its subclass."
+	attack_descriptions = ["You should define one or more attack descriptions as a list in your subclass.", "This is an example secondary attack description"]
 
-    def __str__(self):
-        return self.name
+	damage = 0		# Define this appropriately in your subclass.
+
+	def equip_text(self):
+		return self.equip_description
+
+	def attack(self):
+		return [self.attack_descriptions[randint(0, len(self.attack_descriptions)-1)], self.damage]
+
+
 class Pipe(Weapon):
     def __init(self)
         self.name = "Brass Pipe"
