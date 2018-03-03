@@ -129,8 +129,8 @@ class Ellis(MapTile):
 class Basement(MapTile):
 	def intro_text(self):
 		items = [Item.OpSword("There is a sword leaning on the wall. You shouldn't take it;)")
-					Item.HandCannon("The is a pistol on the shelf")
-					Consumable.EnergyDrink("There is an energy drink in the mini fridge")]
+				 Item.HandCannon("There is a pistol on the shelf")
+				 Consumable.EnergyDrink("There is an energy drink in the mini fridge")]
 		description = """ You enter a dark room. In here are scattered tools and remains across the floor
 		that you cannot identify. In the east corner there is a box labeled WIRES. On
 		the west corner there is a minfridge.  """
