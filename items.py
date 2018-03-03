@@ -77,7 +77,7 @@ class OpSword(Weapon):
         name = "Ironically Op Sword"
         description = "Read the name"
         damage = 1000000000000000
-        effect = "One use per battle"
+        
 
 
 class HandCannon(Weapon):
