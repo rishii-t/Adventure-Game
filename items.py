@@ -95,9 +95,8 @@ class HandCannon(Item):
 
 class Consumable(Item):
 	consume_description = "You should define flavor text for consuming this item in its subclass."
-    dropped_description = "Flavor text"
 
-	healing_value = 0		# Define this appropriately in your subclass.
+    healing_value = 0		# Define this appropriately in your subclass.
 
 	def consume(self):
 		return [self.consume_description, self.dropped_description, self.healing_value]
