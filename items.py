@@ -43,45 +43,52 @@ class Item:
 
 
 class Pipe(Weapon):
-    def __init(self)
+    def __init(self):
         name = "Brass Pipe"
         description = "A jagged brass pipe from a broken piping system."
+        dropped_description = "There is a pipe on the ground."
         damage = 50
 
 
 
+
 class Knife(Weapon):
-    def __init(self)
+    def __init(self):
         name = "Knife"
         description = "It's not an actual knife, instead its a jagged piece of metal you found in someones body."
+        dropped_description = "There is a knife on the ground."
         damage = 50
 
 
 
 class DemogorganTeeth(Weapon):
-    def __init(self)
+    def __init(self):
         name = "Dem Teeth"
         descirption = 'Teeth from a Doggerman. Etching in the handle says "use Wordplays"'
-        damage = 7
+        dropped_description = "There is are demogorgan teeth on the ground."
+        damage = 10
 
 
 class Gun(Weapon):
-    def __init(self)
+    def __init(self):
         name = "Snake Gun"
         description = "Gun that shoots black worms that crawl into the enemies mouth. Proceeds to eat the inside of the enemy. Yum"
+        dropped_description = "There is a gun on the ground."
         damage = 60
 
 
 class OpSword(Weapon):
-    def __init(self)
+    def __init(self):
         name = "Ironically Op Sword"
         description = "Read the name"
+        dropped_description = "There is a glowing sword on the ground."
         damage = 1000000000000000
-        
+
 
 
 class HandCannon(Weapon):
-    def __init(self)
+    def __init(self):
         name = "Hand Cannon"
         description = "A cannon that was shrunk to fit a human hand"
+        dropped_description = "There is a huge gun on the ground."
         damage = 90
