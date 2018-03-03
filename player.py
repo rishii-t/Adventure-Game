@@ -1,4 +1,3 @@
-import items
 import weapons
 
 class Player:
