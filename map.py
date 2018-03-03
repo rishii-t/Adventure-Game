@@ -108,7 +108,7 @@ class LivingQuarters(MapTile):
 
 class ContRoomTile(MapTile):
 	def intro_text(self):
-		items = [Weapons.Gun("The is a gun on the control panel. Have fun")] 
+		items = [Weapons.Gun("The is a gun on the control panel. Have fun")]
 		description = """This is the control room. You see hundreds of pipes running in different directions.
 		There is a low hiss and a broken copper pipe in the corner. In the back corner of the room,
 		there are dials spinning in crazy directions. On your left you see a red lever and above it that says
@@ -180,7 +180,7 @@ class RocketPadReal(MapTile):
 		The ceiling consists of a series of metal plates that seem to be interconnected with
 		each other.  There is a robot in the corner that seems to be disabled."""
 
-class WorkRoom(MapTile):
+class MainDeck(MapTile):
 	def intro_text(self):
 		description = """You are in the mainframe of this Space Base. There a rows of computers, desks, and cubicles lined across.
 		The computer systems all show the same error message. There are papers scattered everywhere. In the center of the
@@ -190,9 +190,9 @@ class World:									# I choose to define the world as a class. This makes it mo
 	map = [
 		[Basement(), 		None,		None,		None,			None, 			LivingQuarters(), 	SpawnTile(), 	LivingQuarters(), 	None, 			None],
 		[None, 				None,		None,		None, 			Recreation(), 	None, 				NorthHall(), 	None, 				None, 			None],
-		[None,				None,		None,		None, 			WorkRoom(), 	WorkRoom(), 		WorkRoom(), 	WorkRoom(), 		ContRoomTile(), None],
-		[RocketPadReal(),	EastHall(), RocketPad(),EastHall(), 	WorkRoom(), 	WorkRoom(), 		WorkRoom(), 	WorkRoom(), 		None, 			None],
-		[None,				None,		None,		Laboratory(), 	WorkRoom(), 	WorkRoom(), 		WorkRoom(), 	WorkRoom(), 		Ellis(), 		None],
+		[None,				None,		None,		None, 			MainDeck(), 	MainDeck(), 		MainDeck(), 	MainDeck(), 		ContRoomTile(), None],
+		[RocketPadReal(),	EastHall(), RocketPad(),EastHall(), 	MainDeck(), 	MainDeck(), 		MainDeck(), 	MainDeck(), 		None, 			None],
+		[None,				None,		None,		Laboratory(), 	MainDeck(), 	MainDeck(), 		MainDeck(), 	MainDeck(), 		Ellis(), 		None],
 		[None,				None,		None,		Laboratory(), 	SouthHall(), 	None, 				SouthHall(), 	None, 				None, 			None],
 		[None,				None,		None,		None, 			WasteRoom(), 	None, 				ETP(), 			None, 				None, 			None],
 		[None, 				None,		None,		None, 			None, 			None, 				ETP(),			None, 				None, 			None],
