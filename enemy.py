@@ -1,39 +1,91 @@
+import items
+
 class Enemy:
-	def __init__(self):
-		raise NotImplementedError("Do not create raw Enemy objects.")
+	name = "Do not create raw enemies!"
+	description = "There is no description here because you should not create raw Enemy objects!"
+	attack_description = "There is no attack_description here because you should not create raw Enemy objects!"
+
+	hp = 0
+	damage = 0
+
+	loot = []
+
+	agro = False	# Used to cause enemies to attack spontaneously.
+
+	def __init__(self, direction = None, loot = []):
+		if(direction == 'n'):
+			self.direction = 'north'
+		elif(direction == 's'):
+			self.direction = 'south'
+		elif(direction == 'e'):
+			self.direction = 'east'
+		elif(direction == 'w'):
+			self.direction = 'west'
+		else:
+			self.direction = None
+
+		if(len(self.loot) > 0):
+			for item in loot:
+				self.loot.append(item)
+		else:
+			self.loot = loot
 
 	def __str__(self):
 		return self.name
-		return self.description
+
+	def check_text(self):
+		text = ""
+		if(self.direction):
+			text = "A %s is blocking your progress to the %s." % (self.name, self.direction)
+		text += " " + self.description
+		return text
+
+	def take_damage(self, amount):
+		self.hp -= amount
+		if(self.hp <= 0):
+			self.hp = 0
+			defeat_text = "The %s is defeated." % self.name
+			if(len(self.loot) > 0):
+				defeat_text += " It dropped the following items: "
+				for item in self.loot:
+					defeat_text += "* " + str(item)
+			return defeat_text
+		else:
+			return "The %s took %d damage." % (self.name, amount)
 
 	def is_alive(self):
 		return self.hp > 0
 
-
-class Doggerman(Enemy):
-	def __init__(self):
-		self.name = "Doggerman"
-		self.description = "Has a peculiar face that splits into five petals with teeth. Built with a humanoid body."
-		self.hp = 100
-		self.damage = 10
+	def handle_input(self, verb, noun1, noun2, inventory):
+		return [False, None, inventory]
 
 
-class Ogre(Enemy):
-	def __init__(self):
-		self.name = "Ogre"
-		self.hp = 30
-		self.damage = 10
+class Demogorgon(Enemy):
+	name = "Demogorgon"
+	description = "A scary alien-looking creature"
+	hp = 10
+	damage = 2
 
 
-class BatColony(Enemy):
-	def __init__(self):
-		self.name = "Colony of bats"
-		self.hp = 100
-		self.damage = 4
+class VirusBot(Enemy):
+	name = "VirusBot"
+	description = "A robot engaged by the virus."
+	hp = 30
+	damage = 10
+
+	agro = True
+
+class ComputerVirus(Enemy):
+	name = "Colony of bats"
+	description = "The  Computer Virus that has locked you in"
+	hp = 100
+	damage = 0
 
 
-class RockMonster(Enemy):
-	def __init__(self):
-		self.name = "Rock Monster"
-		self.hp = 80
-		self.damage = 15
+
+class Slime(Enemy):
+	name = "Rock Monster"
+	description = "A slimey virus created in the Research Lab."
+	hp = 80
+	damage = 15
+	loot = [items.Iron_Key("Within the remains of the virus you find the key to the locker")]
