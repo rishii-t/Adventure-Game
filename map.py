@@ -213,15 +213,15 @@ class MainDeck(MapTile):
 
 class World:									# I choose to define the world as a class. This makes it more straightforward to import into the game.
 	map = [
-		[None, 											None,										None,		None,			None, 			LivingQuarters(walls = [ walls.Wall('n')]), 	SpawnTile(walls = [ walls.Wall('n')]), 	LivingQuarters(walls = [ walls.Wall('n')]), 	None, 			None],
-		[None, 											Basement(walls = [ walls.Wall('n')]),		None,		None, 			Recreation(walls = [ walls.Wall('n')]), 	None, 				NorthHall(walls = [ walls.Wall('n')]), 	None, 				None, 			None],
-		[None,											None,										None,		None, 			MainDeck(walls = [ walls.Wall('n')]), 	MainDeck(walls = [ walls.Wall('n')]), 		MainDeck(walls = [ walls.Wall('n')]), 	MainDeck(walls = [ walls.Wall('n')]), 		ContRoomTile(walls = [ walls.Wall('n')]), None],
-		[RocketPadReal(walls = [ walls.Wall('n')]),		EastHall(walls = [ walls.Wall('n')]), RocketPad(walls = [ walls.Wall('n')]),EastHall(walls = [ walls.Wall('n')]), 	MainDeck(walls = [ walls.Wall('n')]), 	MainDeck(walls = [ walls.Wall('n')]), 		MainDeck(), 	MainDeck(walls = [ walls.Wall('n')]), 		None, 			None],
-		[None,											None,		None,		Laboratory(walls = [ walls.Wall('n')]), 	MainDeck(walls = [ walls.Wall('n')]), 	MainDeck(walls = [ walls.Wall('n')]), 		MainDeck(walls = [ walls.Wall('n')]), 	MainDeck(walls = [ walls.Wall('n')]), 		Ellis(walls = [ walls.Wall('n')]), 		None],
-		[None,											None,		None,		Laboratory(walls = [ walls.Wall('n')]), 	SouthHall(walls = [ walls.Wall('n')]), 	None, 				SouthHall(walls = [ walls.Wall('n')]), 	None, 				None, 			None],
-		[None,											None,		None,		None, 			WasteRoom(walls = [ walls.Wall('n')]), 	None, 				ETP(walls = [ walls.Wall('n')]), 			None, 				None, 			None],
-		[None, 											None,		None,		None, 			None, 			None, 				ETP(walls = [ walls.Wall('n')]),			None, 				None, 			None],
-		[None, 											None,		None,		None, 			None, 			None, 				ETP(walls = [ walls.Wall('n')]),			None, 				None, 			None],
+		[None, 			  None,		  None,		   None,			None, 			LivingQuarters(), 	SpawnTile(), 	LivingQuarter(), 	None, 			None],
+		[None, 			  Basement(), None,	       None, 			Recreation, 	None, 				NorthHall, 	    None, 				None, 			None],
+		[None,			  None,		  None,		   None, 			MainDeck, 	    MainDeck, 	        MainDeck, 	    MainDeck, 		    ContRoomTile,   None],
+		[RocketPadReal(), EastHall(), RocketPad(), EastHall(), 	    MainDeck(), 	MainDeck(), 		MainDeck(), 	MainDeck(), 		None, 			None],
+		[None,			  None,		  None,		   Laboratory(), 	MainDeck(), 	MainDeck(), 		MainDeck(), 	MainDeck(), 		Ellis(), 		None],
+		[None,			  None,		  None,		   Laboratory(), 	SouthHall(), 	None, 				SouthHall(), 	None, 				None, 			None],
+		[None,			  None,		  None,		   None, 			WasteRoom(), 	None, 				ETP(), 			None, 				None, 			None],
+		[None, 			  None,		  None,		   None, 			None, 			None, 				ETP(),			None, 				None, 			None],
+		[None, 			  None,		  None,		   None, 			None, 			None, 				ETP(),			None, 				None, 			None],
 	]
 
 	def __init__(self):
