@@ -91,8 +91,7 @@ class MapTile:
 
 
 class SpawnTile(MapTile):
-	def intro_text(self):
-		description = """You wake up in your cabin. Not everthing comes back to you.
+	description = """You wake up in your cabin. Not everthing comes back to you.
         All you remember is a mechanic, alarms, and a crash.
         There is a bright in the room. As you look out the window you realize you are in
         a space station!
@@ -100,39 +99,23 @@ class SpawnTile(MapTile):
 
 
 class WorkTile(MapTile):
-	def intro_text(self):
-		description = """You are in a massive room: the work station. There are many cubicles, mini- lab stations
+	description = """You are in a massive room: the work station. There are many cubicles, mini- lab stations
         and papers all over the floor. The light is flickering. """
 
 class LivingQuarters(MapTile):
-	def intro_text(self):
-		description = """You enter in your companions room. There is no sign of him."""
+	description = """You enter in your companions room. There is no sign of him."""
 
 class ContRoomTile(MapTile):
-	def intro_text(self):
-		items = [Item.Gun("The is a gun on the control panel. Have fun")]
-		description = """This is the control room. You see hundreds of pipes running in different directions.
+	items = [items.Gun("The is a gun on the control panel. Have fun")]
+	description = """This is the control room. You see hundreds of pipes running in different directions.
 		There is a low hiss and a broken copper pipe in the corner. In the back corner of the room,
 		there are dials spinning in crazy directions. On your left you see a red lever and above it that says
 		'EMERGENCY SHUTOFF'."""
 
 class Recreation(MapTile):
-	def intro_text(self):
-		description = """You are in a small room filled with work-out equipment. On the floor there is a
+	description = """You are in a small room filled with work-out equipment. On the floor there is a
 		a leather jacket with a label 'Scott Clarke' . The jacket has
 		blood stains.   """
-
-		def random_spawn(self):
-			if(randint(0,1) == 0):		# 1 in 2 odds.
-				self.enemies = [enemies.VirusBot()]
-			else:
-				self.enemies = []
-
-class Ellis(MapTile):
-	def intro_text(self):
-	 	description = """There is a computer screen in the distance. As you approach it lights up at says
-		'Hello! My name is E.L.L.I.S. I am the computer systems module that runs
-		in this facility.' """
 
 	def random_spawn(self):
 		if(randint(0,1) == 0):		# 1 in 2 odds.
@@ -140,76 +123,78 @@ class Ellis(MapTile):
 		else:
 			self.enemies = []
 
+class Ellis(MapTile):
+	description = """There is a computer screen in the distance. As you approach it lights up at says
+		'Hello! My name is E.L.L.I.S. I am the computer systems module that runs
+		in this facility.' """
+	def random_spawn(self):
+		if(randint(0,1) == 0):		# 1 in 2 odds.
+			self.enemies = [enemies.VirusBot()]
+		else:
+			self.enemies = []
+
 class Basement(MapTile):
-	def intro_text(self):
-		description = """You are in a dark Basement. The Basment has pipes and wires running on it's walls.
+	description = """You are in a dark Basement. The Basment has pipes and wires running on it's walls.
 		There are a few boxes on the floor and an open minifridge in the corner. The minifridge has an Energy Drink. """
-		items = [Item.OpSword("There is a sword leaning on the wall. You shouldn't take it")]
-		#Item.HandCannon("There is a hand cannon on the shelf")
+	items = [items.OpSword("There is a sword leaning on the wall. You shouldn't take it")]
+		#items.HandCannon("There is a hand cannon on the shelf")
 		#Consumable.EnergyDrink("There is an energy drink in the mini fridge")]
 
 class EastHall(MapTile):
-	def intro_text(self):
-		description = """You are in the East Hall. The hall has pipes and wires running on it's walls.  """
+	description = """You are in the East Hall. The hall has pipes and wires running on it's walls.  """
 
 class SouthHall(MapTile):
-	def intro_text(self):
-		description = """You are in the South Hall. The hall has pipes and wires running on it's walls.
+	description = """You are in the South Hall. The hall has pipes and wires running on it's walls.
 		Yet, there is something very strange about the south hall. It is almost as if
 		everything is offset.  """
 
 class NorthHall(MapTile):
-	def intro_text(self):
-		description = """You are in the North Hall. The hall has pipes and wires running on it's walls.  """
+	description = """You are in the North Hall. The hall has pipes and wires running on it's walls.  """
 
 
 class Laboratory(MapTile):
-	def intro_text(self):
-		enemies = [enemy.slime]
-		description = """You are in a Laboratory. There is giant telescope in the corner.
+	enemies = [enemy.Slime()]
+	description = """You are in a Laboratory. There is giant telescope in the corner.
 		There are also rows of counters with different lab equipment you cannot idenitfy.
 		Most of the cabinets underneath the counters are broken. However, there is one counter that is covered in green slime and it's cabinets are locked.
 		"""
 class WasteRoom(MapTile):
-	def intro_text(self):
-		description = """ There are pipes and tubing everywhere. In the center there is
+	description = """ There are pipes and tubing everywhere. In the center there is
 		giant tank, most probably where the waste is recycled. For some reason, the system
 		display is stuck on a random screen. The stench is also horrible and their
 		is waste on the floor.  """
-		def random_spawn(self):
-			if(randint(0,1) == 0):		# 1 in 2 odds.
-				self.enemies = [enemies.VirusBot()]
-			else:
-				self.enemies = []
+		
+	def random_spawn(self):
+		if(randint(0,1) == 0):		# 1 in 2 odds.
+			self.enemies = [enemies.VirusBot()]
+		else:
+			self.enemies = []
+			
 class ETP(MapTile):
-	def intro_text(self):
-		description = """You are in the ETP, the Exit Transport Pod. Unfortunately, the pod is locked.
+	description = """You are in the ETP, the Exit Transport Pod. Unfortunately, the pod is locked.
 		It seems as if the door had been manually locked.  """
 
 class RocketPad(MapTile):
-	def intro_text(self):
-		enemies = [enemy.Demogorgon]
-		description = """You are in the Rocket Pad Chamber. There is a gigantic platform in the center.
+	enemies = [enemy.Demogorgon()]
+	description = """You are in the Rocket Pad Chamber. There is a gigantic platform in the center.
 		The ceiling consists of a series of metal plates that seem to be interconnected with
 		each other.   """
 
 class RocketPadReal(MapTile):
-	def intro_text(self):
-		description = """You are in the Rocket Pad Chamber. There is a gigantic platform in the center.
+	description = """You are in the Rocket Pad Chamber. There is a gigantic platform in the center.
 		The ceiling consists of a series of metal plates that seem to be interconnected with
 		each other.  There is a robot in the corner that seems to be disabled."""
 
 class MainDeck(MapTile):
-	def intro_text(self):
-		description = """You are in the mainframe of this Space Base. There a rows of computers, desks, and cubicles lined across.
+	description = """You are in the mainframe of this Space Base. There a rows of computers, desks, and cubicles lined across.
 		The computer systems all show the same error message. There are papers scattered everywhere. In the center of the
 		room is a gigantic hologram model of the space base. The model seems to display where everthing is.  """
 
-		def random_spawn(self):
-			if(randint(0,2) == 0):		# 1 in 2 odds.
-				self.enemies = [enemies.VirusBot()]
-			else:
-				self.enemies = []
+	def random_spawn(self):
+		if(randint(0,2) == 0):		# 1 in 2 odds.
+			self.enemies = [enemies.VirusBot()]
+		else:
+			self.enemies = []
 
 class World:									# I choose to define the world as a class. This makes it more straightforward to import into the game.
 	map = [
@@ -338,7 +323,7 @@ class World:									# I choose to define the world as a class. This makes it mo
 				if barrier.direction == 'north':
 					barrier_present = True
 			if(not barrier_present):
-				self.map[y][x].add_barrier(walls.Wall('n'))
+				self.map[y][x].add_walls(walls.Wall('n'))
 
 		[status, text] = self.check_south(x,y)
 		barrier_present = False
@@ -350,7 +335,7 @@ class World:									# I choose to define the world as a class. This makes it mo
 				if barrier.direction == 'south':
 					barrier_present = True
 			if(not barrier_present):
-				self.map[y][x].add_barrier(walls.Wall('s'))
+				self.map[y][x].add_walls(walls.Wall('s'))
 
 		[status, text] = self.check_east(x,y)
 		barrier_present = False
@@ -362,7 +347,7 @@ class World:									# I choose to define the world as a class. This makes it mo
 				if barrier.direction == 'east':
 					barrier_present = True
 			if(not barrier_present):
-				self.map[y][x].add_barrier(walls.Wall('e'))
+				self.map[y][x].add_walls(walls.Wall('e'))
 
 		[status, text] = self.check_west(x,y)
 		barrier_present = False
@@ -374,7 +359,7 @@ class World:									# I choose to define the world as a class. This makes it mo
 				if barrier.direction == 'west':
 					barrier_present = True
 			if(not barrier_present):
-				self.map[y][x].add_barrier(walls.Wall('w'))
+				self.map[y][x].add_walls(walls.Wall('w'))
 
 	def update_rooms(self, player):
 		for row in self.map:

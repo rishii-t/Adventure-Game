@@ -2,15 +2,15 @@ import items
 
 class Player:
 	def __init__(self):
-		self.inventory = None
+		self.inventory = []
 
 		self.weapon = None
 
 		self.hp = 100
 		self.max_hp = 250
 
-		self.x = 7
-		self.y = 1
+		self.x = 6
+		self.y = 0
 
 	def print_inventory(self):
 		print("Inventory:")
