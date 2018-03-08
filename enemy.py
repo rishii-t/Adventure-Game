@@ -72,7 +72,7 @@ class VirusBot(Enemy):
 	description = "A robot engaged by the virus."
 	hp = 300
 	damage = 10
-
+	loot = [items.Key1("The Virus is Holding the first key")]
 	agro = True
 
 class ComputerVirus(Enemy):
@@ -83,8 +83,10 @@ class ComputerVirus(Enemy):
 
 
 
+
 class Slime(Enemy):
 	name = "Slime"
 	description = "A slimey virus created in the Research Lab."
 	hp = 180
 	damage = 15
+	loot = [items.Key2("There is a key within the remanents of the primitive slime")]
