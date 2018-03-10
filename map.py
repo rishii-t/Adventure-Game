@@ -103,11 +103,8 @@ class SpawnTile(MapTile):
 	def first_time(self):		# Used to have your NPC do something different the first time you see them.
 			self.first_encounter = False
 			text = self.description
-			text += """ You wake up in your cabin. Not everthing comes back to you.
-		        All you remember is a mechanic, alarms, and a crash.
-		        There is a bright in the room. As you look out the window you realize you are in
-		        a space station!"""
-				return text
+			text += """ You wake up in your cabin. Not everthing comes back to you. All you remember is a mechanic, alarms, and a crash. There is a bright in the room. As you look out the window you realize you are in a space station!"""
+			return text
 
 
 class WorkTile(MapTile):
