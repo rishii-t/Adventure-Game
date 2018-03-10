@@ -98,6 +98,10 @@ class MapTile:
 		else:
 			return self.description
 
+	def first_time(self):		# Used to have your NPC do something different the first time you see them.
+		self.first_encounter = False
+		return self.description
+
 class SpawnTile(MapTile):
 	description = """You enter a messy room, there are clothes strewn everywhere!"""
 	def first_time(self):		# Used to have your NPC do something different the first time you see them.
