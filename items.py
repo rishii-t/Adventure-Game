@@ -64,8 +64,8 @@ class Knife(Item):
 class DemogorganTeeth(Item):
     def __init(self):
         name = "Dem Teeth"
-        descirption = 'Teeth from a Doggerman. Etching in the handle says "use Wordplays"'
-        dropped_description = "There is are demogorgan teeth on the ground."
+        descirption = 'Teeth from a Domogorgon. Etching in the handle says "use Wordplays"'
+        dropped_description = "There are demogorgan teeth on the ground."
         damage = 10
 
 
@@ -110,19 +110,31 @@ class EnergyDrink(Consumable):
 
 class Key1(Item):
 	name = "key 1"
+<<<<<<< HEAD
     description = "1st aqcuirable key used"
 
+=======
+	description = "1st aqcuirable key"
+>>>>>>> 34835d67c5efe0a32e402d8e7df85a94baccc12e
 	def consume(self):
-        return [self.description]
+		return [self.description]
 class Key2(Item):
 	name = "key 2"
+<<<<<<< HEAD
     description = "2st aqcuirable key used"
 
+=======
+	description = "2nd aqcuirable key"
+>>>>>>> 34835d67c5efe0a32e402d8e7df85a94baccc12e
 	def consume(self):
-        return [self.description]
+		return [self.description]
 class Key3(Item):
 	name = "key 3"
+<<<<<<< HEAD
     description = "3st aqcuirable key used"
 
+=======
+	description = "3rd aqcuirable key"
+>>>>>>> 34835d67c5efe0a32e402d8e7df85a94baccc12e
 	def consume(self):
-        return [self.description]
+		return [self.description]

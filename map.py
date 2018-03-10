@@ -162,14 +162,15 @@ class WasteRoom(MapTile):
 	description = """ There are pipes and tubing everywhere. In the center there is
 		giant tank, most probably where the waste is recycled. For some reason, the system
 		display is stuck on a random screen. The stench is also horrible and their
-		is waste on the floor.  """
-		
+		is key amongst the waste on the floor.  """
+	items = [items.Key3]
+
 	def random_spawn(self):
 		if(randint(0,1) == 0):		# 1 in 2 odds.
 			self.enemies = [enemies.VirusBot()]
 		else:
 			self.enemies = []
-			
+
 class ETP(MapTile):
 	description = """You are in the ETP, the Exit Transport Pod. Unfortunately, the pod is locked.
 		It seems as if the door had been manually locked.  """
@@ -198,7 +199,7 @@ class MainDeck(MapTile):
 
 class World:									# I choose to define the world as a class. This makes it more straightforward to import into the game.
 	map = [
-		[None, 			  None,		  None,		   None,			None, 			LivingQuarters(), 	SpawnTile(), 	LivingQuarter(), 	None, 			None],
+		[None, 			  None,		  None,		   None,			None, 			LivingQuarters(), 	SpawnTile(), 	LivingQuarters(), 	None, 			None],
 		[None, 			  Basement(), None,	       None, 			Recreation, 	None, 				NorthHall, 	    None, 				None, 			None],
 		[None,			  None,		  None,		   None, 			MainDeck, 	    MainDeck, 	        MainDeck, 	    MainDeck, 		    ContRoomTile,   None],
 		[RocketPadReal(), EastHall(), RocketPad(), EastHall(), 	    MainDeck(), 	MainDeck(), 		MainDeck(), 	MainDeck(), 		None, 			None],
