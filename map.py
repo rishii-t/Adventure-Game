@@ -103,15 +103,8 @@ class MapTile:
 		return self.description
 
 class SpawnTile(MapTile):
-	description = """You enter a messy room, there are clothes strewn everywhere!"""
-	def first_time(self):		# Used to have your NPC do something different the first time you see them.
-			self.first_encounter = False
-			text = self.description
-			text += """ You wake up in your cabin. Not everthing comes back to you. All you remember is a mechanic, alarms, and a crash. There is a bright in the room. As you look out the window you realize you are in a space station!"""
-			return text
+	description = """You enter in a messy room, there are clothes everywhere and ..."""
 
-	if self.first_encounter = True
-		self.first_time()
 
 
 class WorkTile(MapTile):
@@ -214,8 +207,8 @@ class MainDeck(MapTile):
 
 class World:									# I choose to define the world as a class. This makes it more straightforward to import into the game.
 	map = [
-		[None, 			  None,		  None,		   None,			                        None, 			LivingQuarters(), 	SpawnTile(), 	LivingQuarters(), 	None, 			  None],
-		[None, 			  Basement(), None,	       None, 			                        Recreation(), 	None, 				NorthHall(walls = [walls.WoodenDoor('n')]), 	None, 				None, 			  None],
+		[None, 			  None,		  None,		   None,			                        None, 			LivingQuarters(), 	SpawnTile(walls = [walls.WoodenDoor('s')]), 	LivingQuarters(), 	None, 			  None],
+		[None, 			  Basement(), None,	       None, 			                        Recreation(), 	None, 				NorthHall(), 	None, 				None, 			  None],
 		[None,			  None,		  None,		   None, 			                        MainDeck(walls = [walls.WoodenDoor('n')]), 	MainDeck(), 	    MainDeck(), 	MainDeck(), 	    ContRoomTile(walls = [walls.WoodenDoor('s'), walls.Wall('w')]),   None],
 		[RocketPadReal(walls = [walls.WoodenDoor('e')]), EastHall(), RocketPad(walls = [walls.WoodenDoor('e')]), EastHall(), 	                            MainDeck(), 	MainDeck(), 		MainDeck(), 	MainDeck(), 		None, 		   	  None],
 		[None,			  None,		  None,		   Laboratory(walls = [walls.Wall('e')]), 	MainDeck(), 	MainDeck(), 		MainDeck(), 	MainDeck(), 		Ellis(walls = [walls.WoodenDoor('n'), walls.Wall('w')]), 		  None],

@@ -36,9 +36,9 @@ class WoodenDoor(Barrier):
 
 	def description(self):
 		if(self.state == 'closed'):
-			return "An metal door blocks your path to the %s." % self.direction
+			return "A metal door blocks your path to the %s." % self.direction
 		else:
-			return "An metal door lies open before you to the %s." % self.direction
+			return "A metal door lies open before you to the %s." % self.direction
 
 	def handle_input(self, verb, noun1, noun2, inventory):
 		if(noun1 == 'door' or noun1 == 'metal door'):

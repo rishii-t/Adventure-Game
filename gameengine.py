@@ -174,6 +174,7 @@ def print_welcome_text():
 	print()
 	print_center("========================================================")
 	print()
+	print("""You wake up in your cabin. Not everthing comes back to you. All you remember is a mechanic, alarms, and a crash. There is a bright in the room. As you look out the window you realize you are in a space station!""")
 
 def print_victory_text():
 	print()
