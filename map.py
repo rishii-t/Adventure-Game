@@ -162,8 +162,7 @@ class WasteRoom(MapTile):
 	description = """ There are pipes and tubing everywhere. In the center there is
 		giant tank, most probably where the waste is recycled. For some reason, the system
 		display is stuck on a random screen. The stench is also horrible and their
-		is key amongst the waste on the floor.  """
-	items = [items.Key3]
+		is waste on the floor.  """
 
 	def random_spawn(self):
 		if(randint(0,1) == 0):		# 1 in 2 odds.
@@ -199,16 +198,14 @@ class MainDeck(MapTile):
 
 class World:									# I choose to define the world as a class. This makes it more straightforward to import into the game.
 	map = [
-		[None, 			  None,		  None,		   None,			None, 			LivingQuarters(), 	SpawnTile(), 	LivingQuarters(), 	None, 			None],
-		[None, 			  Basement(), None,	       None, 			Recreation, 	None, 				NorthHall, 	    None, 				None, 			None],
-		[None,			  None,		  None,		   None, 			MainDeck, 	    MainDeck, 	        MainDeck, 	    MainDeck, 		    ContRoomTile,   None],
-		[RocketPadReal(), EastHall(), RocketPad(), EastHall(), 	    MainDeck(), 	MainDeck(), 		MainDeck(), 	MainDeck(), 		None, 			None],
-		[None,			  None,		  None,		   Laboratory(), 	MainDeck(), 	MainDeck(), 		MainDeck(), 	MainDeck(), 		Ellis(), 		None],
-		[None,			  None,		  None,		   Laboratory(), 	SouthHall(), 	None, 				SouthHall(), 	None, 				None, 			None],
-		[None,			  None,		  None,		   None, 			WasteRoom(), 	None, 				ETP(), 			None, 				None, 			None],
-		[None, 			  None,		  None,		   None, 			None, 			None, 				ETP(),			None, 				None, 			None],
-		[None, 			  None,		  None,		   None, 			None, 			None, 				ETP(),			None, 				None, 			None],
-	]
+		[None, 			  None,		  None,		   None,			                        None, 			LivingQuarters(), 	SpawnTile(), 	LivingQuarter(), 	None, 			  None],
+		[None, 			  Basement(), None,	       None, 			                        Recreation(), 	None, 				NorthHall(walls = [walls.WoodenDoor('')]), 	None, 				None, 			  None],
+		[None,			  None,		  None,		   None, 			                        MainDeck(walls = [walls.WoodenDoor('n')]), 	MainDeck(), 	    MainDeck(), 	MainDeck(), 	    ContRoomTile(walls = [walls.WoodenDoor('s'), walls.Wall('w')]),   None],
+		[RocketPadReal(walls = [walls.WoodenDoor('e')]), EastHall(), RocketPad(walls = [walls.WoodenDoor('e')]), EastHall(), 	                            MainDeck(), 	MainDeck(), 		MainDeck(), 	MainDeck(), 		None, 		   	  None],
+		[None,			  None,		  None,		   Laboratory(walls = [walls.Wall('e')]), 	MainDeck(), 	MainDeck(), 		MainDeck(), 	MainDeck(), 		Ellis(walls = [walls.WoodenDoor('n'), walls.Wall('w')]), 		  None],
+		[None,			  None,		  None,		   Laboratory(walls = [walls.Wall('e')]), 	SouthHall(walls = [walls.WoodenDoor('n')]), 	None, 				SouthHall(), 	None, 				None, 			  None],
+		[None,			  None,		  None,		   None, 			                        WasteRoom(walls = [walls.WoodenDoor('n')]), 	None, 				ETP(walls = [walls.LockedDoor('n')]), 			None, 				None, 			  None],
+		]
 
 	def __init__(self):
 		for i in range(len(self.map)):			# We want to set the x, y coordinates for each tile so that it "knows" where it is in the map.
