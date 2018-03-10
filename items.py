@@ -110,7 +110,7 @@ class EnergyDrink(Consumable):
 
 class Key1(Item):
 	name = "key 1"
-    description = "1st aqcuirable key used"
+	description = "1st aqcuirable key used"
 
 	def consume(self):
 		return [self.description]
@@ -122,7 +122,7 @@ class Key2(Item):
 		return [self.description]
 class Key3(Item):
 	name = "key 3"
-    description = "3st aqcuirable key used"
+	description = "3st aqcuirable key used"
 
 	def consume(self):
 		return [self.description]
