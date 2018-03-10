@@ -199,7 +199,7 @@ class MainDeck(MapTile):
 class World:									# I choose to define the world as a class. This makes it more straightforward to import into the game.
 	map = [
 		[None, 			  None,		  None,		   None,			                        None, 			LivingQuarters(), 	SpawnTile(), 	LivingQuarters(), 	None, 			  None],
-		[None, 			  Basement(), None,	       None, 			                        Recreation(), 	None, 				NorthHall(walls = [walls.WoodenDoor('')]), 	None, 				None, 			  None],
+		[None, 			  Basement(), None,	       None, 			                        Recreation(), 	None, 				NorthHall(walls = [walls.WoodenDoor('n')]), 	None, 				None, 			  None],
 		[None,			  None,		  None,		   None, 			                        MainDeck(walls = [walls.WoodenDoor('n')]), 	MainDeck(), 	    MainDeck(), 	MainDeck(), 	    ContRoomTile(walls = [walls.WoodenDoor('s'), walls.Wall('w')]),   None],
 		[RocketPadReal(walls = [walls.WoodenDoor('e')]), EastHall(), RocketPad(walls = [walls.WoodenDoor('e')]), EastHall(), 	                            MainDeck(), 	MainDeck(), 		MainDeck(), 	MainDeck(), 		None, 		   	  None],
 		[None,			  None,		  None,		   Laboratory(walls = [walls.Wall('e')]), 	MainDeck(), 	MainDeck(), 		MainDeck(), 	MainDeck(), 		Ellis(walls = [walls.WoodenDoor('n'), walls.Wall('w')]), 		  None],
