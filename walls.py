@@ -29,33 +29,33 @@ class Wall(Barrier):
 		return "There doesn't seem to be a path to the %s." % self.direction
 
 class WoodenDoor(Barrier):
-	name = 'Wooden Door'
+	name = 'Metal Door'
 	state = 'closed'	# Used to store the state of doors or hidden passages.
 
 	verbose = True	# Used to determine whether or not include the barrier's description in the room description.
 
 	def description(self):
 		if(self.state == 'closed'):
-			return "An old wooden door blocks your path to the %s." % self.direction
+			return "An metal door blocks your path to the %s." % self.direction
 		else:
-			return "An old wooden door lies open before you to the %s." % self.direction
+			return "An metal door lies open before you to the %s." % self.direction
 
 	def handle_input(self, verb, noun1, noun2, inventory):
-		if(noun1 == 'door' or noun1 == 'wooden door'):
+		if(noun1 == 'door' or noun1 == 'metal door'):
 			if(verb == 'check'):
 				return [True, self.description(), inventory]
 			if(verb == 'open'):
 				if(self.state == 'closed'):
 					self.state = 'open'
 					self.passable = True
-					return [True, "You tug on the handle, and the wooden door creaks open.", inventory]
+					return [True, "You push the button, and the metal door creaks open.", inventory]
 				else:
 					return [True, "The door is already open.", inventory]
 			if(verb == 'close'):
 				if(self.state == 'open'):
 					self.state = 'closed'
 					self.passable = False
-					return [True, "You slam the old wooden door shut.", inventory]
+					return [True, "You slam the metal door slides shut.", inventory]
 				else:
 					return [True, "The door is already closed.", inventory]
 
@@ -72,11 +72,11 @@ class LockedDoor(Barrier):
 	def description(self):
 		if(self.state == 'closed'):
 			if(self.locked):
-				return "An imposing door with a lock blocks a passageway to the %s." % self.direction
+				return "A door with a lock blocks a passageway to the %s." % self.direction
 			else:
-				return "An imposing door blocks a passageway to the %s. " % self.direction
+				return "An door blocks a passageway to the %s. " % self.direction
 		else:
-			return "An imposing door lies open before you to the %s." % self.direction
+			return "An door lies open before you to the %s." % self.direction
 
 	def handle_input(self, verb, noun1, noun2, inventory):
 		if(noun1 == 'door' or noun1 == 'locked door'):
