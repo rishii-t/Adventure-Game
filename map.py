@@ -107,7 +107,7 @@ class SpawnTile(MapTile):
 		        All you remember is a mechanic, alarms, and a crash.
 		        There is a bright in the room. As you look out the window you realize you are in
 		        a space station!"""
-				return text
+					return text
 
 
 class WorkTile(MapTile):
