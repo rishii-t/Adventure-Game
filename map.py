@@ -110,6 +110,9 @@ class SpawnTile(MapTile):
 			text += """ You wake up in your cabin. Not everthing comes back to you. All you remember is a mechanic, alarms, and a crash. There is a bright in the room. As you look out the window you realize you are in a space station!"""
 			return text
 
+	if self.first_encounter = True
+		self.first_time()
+
 
 class WorkTile(MapTile):
 	description = """You are in a massive room: the work station. There are many cubicles, mini- lab stations
