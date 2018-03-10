@@ -7,18 +7,18 @@ from random import randint
 class MapTile:
 	description = "Do not create raw MapTiles! Create a subclass instead!"
 	walls = []
-	enemies = []
+	enemy = []
 	items = []
 
 
-	def __init__(self, x=0, y=0, walls = [], items = [], enemies = []):
+	def __init__(self, x=0, y=0, walls = [], items = [], enemy = []):
 		self.x = x
 		self.y = y
 		for walls in walls:
 			self.add_walls(walls)
 		for item in items:
 			self.add_item(item)
-		for enemy in enemies:
+		for enemy in enemy:
 			self.add_enemy(enemy)
 
 	def intro_text(self):
@@ -26,7 +26,7 @@ class MapTile:
 		for walls in self.walls:
 			if(walls.verbose):
 				text += " " + walls.description()
-		#for enemy in self.contents['enemies']:
+		#for enemy in self.contents['enemy']:
 		#	text += " " + enemy.description()
 		for item in self.items:
 			text += " " + item.room_text()
@@ -57,13 +57,13 @@ class MapTile:
 						inventory.pop(index)
 						return [True, drop_text, inventory]
 
-		for list in [self.walls, self.items, self.enemies]:
+		for list in [self.walls, self.items, self.enemy]:
 			for item in list:
 				[status, description, inventory] = item.handle_input(verb, noun1, noun2, inventory)
 				if(status):
 					return [status, description, inventory]
 
-		for list in [self.walls, self.items, self.enemies]:			# Added to give the player feedback if they have part of the name of an object correct.
+		for list in [self.walls, self.items, self.enemy]:			# Added to give the player feedback if they have part of the name of an object correct.
 			for item in list:
 				if(item.name):
 					if(noun1 in item.name):
@@ -84,10 +84,10 @@ class MapTile:
 			self.items.append(item)	# Add to the list if it is not empty.
 
 	def add_enemy(self, enemy):
-		if(len(self.enemies) == 0):
-			self.enemies = [enemy]		# Initialize the list if it is empty.
+		if(len(self.enemy) == 0):
+			self.enemy = [enemy]		# Initialize the list if it is empty.
 		else:
-			self.enemies.append(enemy)
+			self.enemy.append(enemy)
 
 			first.ecounter = True
 
@@ -103,7 +103,7 @@ class MapTile:
 		return self.description
 
 class SpawnTile(MapTile):
-	description = """You enter in a messy room, there are clothes everywhere and ..."""
+	description = """You enter a messy room. There are clothes strewn everywhere. """
 
 
 
@@ -128,9 +128,9 @@ class Recreation(MapTile):
 
 	def random_spawn(self):
 		if(randint(0,1) == 0):		# 1 in 2 odds.
-			self.enemies = [enemies.VirusBot()]
+			self.enemy = [enemy.VirusBot()]
 		else:
-			self.enemies = []
+			self.enemy = []
 
 class Ellis(MapTile):
 	description = """There is a computer screen in the distance. As you approach it lights up at says
@@ -138,9 +138,9 @@ class Ellis(MapTile):
 		in this facility.' """
 	def random_spawn(self):
 		if(randint(0,1) == 0):		# 1 in 2 odds.
-			self.enemies = [enemies.VirusBot()]
+			self.enemy = [enemy.VirusBot()]
 		else:
-			self.enemies = []
+			self.enemy = []
 
 class Basement(MapTile):
 	description = """You are in a dark Basement. The Basment has pipes and wires running on it's walls.
@@ -155,14 +155,14 @@ class EastHall(MapTile):
 class SouthHall(MapTile):
 	description = """You are in the South Hall. The hall has pipes and wires running on it's walls.
 		Yet, there is something very strange about the south hall. It is almost as if
-		everything is offset.  """
+		everything is offset. The door to the south is to the Exit Transport Pod but you need 3 keys to unlock it and escape.  """
 
 class NorthHall(MapTile):
 	description = """You are in the North Hall. The hall has pipes and wires running on it's walls.  """
 
 
 class Laboratory(MapTile):
-	enemies = [enemy.Slime()]
+	enemy = [enemy.Slime()]
 	description = """You are in a Laboratory. There is giant telescope in the corner.
 		There are also rows of counters with different lab equipment you cannot idenitfy.
 		Most of the cabinets underneath the counters are broken. However, there is one counter that is covered in green slime and it's cabinets are locked.
@@ -175,16 +175,15 @@ class WasteRoom(MapTile):
 
 	def random_spawn(self):
 		if(randint(0,1) == 0):		# 1 in 2 odds.
-			self.enemies = [enemies.VirusBot()]
+			self.enemy = [enemy.VirusBot()]
 		else:
-			self.enemies = []
+			self.enemy = []
 
 class ETP(MapTile):
-	description = """You are in the ETP, the Exit Transport Pod. Unfortunately, the pod is locked.
-		It seems as if the door had been manually locked.  """
+	description = """You are in the ETP, the Exit Transport Pod. You have sucessfully completed the game in the stage that it is now. Thank You For Playing. """
 
 class RocketPad(MapTile):
-	enemies = [enemy.Demogorgon()]
+	enemy = [enemy.Demogorgon()]
 	description = """You are in the Rocket Pad Chamber. There is a gigantic platform in the center.
 		The ceiling consists of a series of metal plates that seem to be interconnected with
 		each other.   """
@@ -201,19 +200,19 @@ class MainDeck(MapTile):
 
 	def random_spawn(self):
 		if(randint(0,2) == 0):		# 1 in 2 odds.
-			self.enemies = [enemies.VirusBot()]
+			self.enemy = [enemy.VirusBot()]
 		else:
-			self.enemies = []
+			self.enemy = []
 
 class World:									# I choose to define the world as a class. This makes it more straightforward to import into the game.
 	map = [
 		[None, 			  None,		  None,		   None,			                        None, 			LivingQuarters(), 	SpawnTile(walls = [walls.WoodenDoor('s')]), 	LivingQuarters(), 	None, 			  None],
 		[None, 			  Basement(), None,	       None, 			                        Recreation(), 	None, 				NorthHall(), 	None, 				None, 			  None],
-		[None,			  None,		  None,		   None, 			                        MainDeck(walls = [walls.WoodenDoor('n')]), 	MainDeck(), 	    MainDeck(), 	MainDeck(), 	    ContRoomTile(walls = [walls.WoodenDoor('s'), walls.Wall('w')]),   None],
+		[None,			  None,		  None,		   None, 			                        MainDeck(walls = [walls.WoodenDoor('n')]), 	MainDeck(), 	    MainDeck(), 	MainDeck(walls = [walls.WoodenDoor('e')]), 	    ContRoomTile(walls = [walls.WoodenDoor('w')]),   None],
 		[RocketPadReal(walls = [walls.WoodenDoor('e')]), EastHall(), RocketPad(walls = [walls.WoodenDoor('e')]), EastHall(), 	                            MainDeck(), 	MainDeck(), 		MainDeck(), 	MainDeck(), 		None, 		   	  None],
-		[None,			  None,		  None,		   Laboratory(walls = [walls.Wall('e')]), 	MainDeck(), 	MainDeck(), 		MainDeck(), 	MainDeck(), 		Ellis(walls = [walls.WoodenDoor('n'), walls.Wall('w')]), 		  None],
-		[None,			  None,		  None,		   Laboratory(walls = [walls.Wall('e')]), 	SouthHall(walls = [walls.WoodenDoor('n')]), 	None, 				SouthHall(), 	None, 				None, 			  None],
-		[None,			  None,		  None,		   None, 			                        WasteRoom(walls = [walls.WoodenDoor('n')]), 	None, 				ETP(walls = [walls.LockedDoor('n')]), 			None, 				None, 			  None],
+		[None,			  None,		  None,		   Laboratory(walls = [walls.Wall('e')]), 	MainDeck(), 	MainDeck(), 		MainDeck(), 	MainDeck(), 		Ellis(), 		  None],
+		[None,			  None,		  None,		   Laboratory(walls = [walls.Wall('e')]), 	SouthHall(walls = [walls.WoodenDoor('n')]), 	None, 				SouthHall(walls = [walls.LockedDoor('s')]), 	None, 				None, 			  None],
+		[None,			  None,		  None,		   None, 			                        WasteRoom(walls = [walls.WoodenDoor('n')]), 	None, 				ETP(), 			None, 				None, 			  None],
 		]
 
 	def __init__(self):
@@ -235,7 +234,7 @@ class World:									# I choose to define the world as a class. This makes it mo
 			return None
 
 	def check_north(self, x, y):
-		for enemy in self.map[y][x].enemies:
+		for enemy in self.map[y][x].enemy:
 			if(enemy.direction == 'north'):
 				return [False, enemy.check_text()]
 		for barrier in self.map[y][x].walls:
@@ -256,7 +255,7 @@ class World:									# I choose to define the world as a class. This makes it mo
 			return [False, "There doesn't seem to be a path to the north."]
 
 	def check_south(self, x, y):
-		for enemy in self.map[y][x].enemies:
+		for enemy in self.map[y][x].enemy:
 			if(enemy.direction == 'south'):
 				return [False, enemy.check_text()]
 		for barrier in self.map[y][x].walls:
@@ -277,7 +276,7 @@ class World:									# I choose to define the world as a class. This makes it mo
 			return [False, "There doesn't seem to be a path to the south."]
 
 	def check_west(self, x, y):
-		for enemy in self.map[y][x].enemies:
+		for enemy in self.map[y][x].enemy:
 			if(enemy.direction == 'west'):
 				return [False, enemy.check_text()]
 		for barrier in self.map[y][x].walls:
@@ -298,7 +297,7 @@ class World:									# I choose to define the world as a class. This makes it mo
 			return [False, "There doesn't seem to be a path to the west."]
 
 	def check_east(self, x, y):
-		for enemy in self.map[y][x].enemies:
+		for enemy in self.map[y][x].enemy:
 			if(enemy.direction == 'east'):
 				return [False, enemy.check_text()]
 		for barrier in self.map[y][x].walls:
@@ -323,7 +322,7 @@ class World:									# I choose to define the world as a class. This makes it mo
 		[status, text] = self.check_north(x,y)
 		barrier_present = False
 		if(not status):
-			for enemy in self.map[y][x].enemies:
+			for enemy in self.map[y][x].enemy:
 				if enemy.direction == 'north':
 					barrier_present = True
 			for barrier in self.map[y][x].walls:
@@ -335,7 +334,7 @@ class World:									# I choose to define the world as a class. This makes it mo
 		[status, text] = self.check_south(x,y)
 		barrier_present = False
 		if(not status):
-			for enemy in self.map[y][x].enemies:
+			for enemy in self.map[y][x].enemy:
 				if enemy.direction == 'south':
 					barrier_present = True
 			for barrier in self.map[y][x].walls:
@@ -347,7 +346,7 @@ class World:									# I choose to define the world as a class. This makes it mo
 		[status, text] = self.check_east(x,y)
 		barrier_present = False
 		if(not status):
-			for enemy in self.map[y][x].enemies:
+			for enemy in self.map[y][x].enemy:
 				if enemy.direction == 'east':
 					barrier_present = True
 			for barrier in self.map[y][x].walls:
@@ -359,7 +358,7 @@ class World:									# I choose to define the world as a class. This makes it mo
 		[status, text] = self.check_west(x,y)
 		barrier_present = False
 		if(not status):
-			for enemy in self.map[y][x].enemies:
+			for enemy in self.map[y][x].enemy:
 				if enemy.direction == 'west':
 					barrier_present = True
 			for barrier in self.map[y][x].walls:

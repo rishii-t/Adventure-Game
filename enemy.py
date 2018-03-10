@@ -65,6 +65,7 @@ class Demogorgon(Enemy):
 	description = "A scary alien-looking creature"
 	hp = 10
 	damage = 2
+	agro = True
 
 
 class VirusBot(Enemy):
@@ -80,6 +81,7 @@ class ComputerVirus(Enemy):
 	description = "The  Computer Virus that has locked you in"
 	hp = 3000
 	damage = 0
+	agro = True
 
 
 

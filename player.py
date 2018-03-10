@@ -2,7 +2,7 @@ import items
 
 class Player:
 	def __init__(self):
-		self.inventory = []
+		self.inventory = [items.Key1(), items.Key2(), items.Key3()]
 
 		self.weapon = None
 
@@ -23,7 +23,6 @@ class Player:
 				equipped_weapon = True
 			print(inventory_text)
 			best_weapon = self.most_powerful_weapon()
-		print("* %i Gold" % self.gold)
 		if(best_weapon):
 			print("Your best weapon is your {}.".format(best_weapon))
 		else:

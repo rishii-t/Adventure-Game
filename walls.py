@@ -100,10 +100,10 @@ class LockedDoor(Barrier):
 			#	else:
 			#		return [True, "The door is already closed.", inventory]
 			if(verb == 'unlock'):
-				if(self.locked):
+				if(self.locked == True):
 					if(noun2 == 'keys'):
 						for index in range(len(inventory)):
-							if(inventory[index].name.lower() == 'key 1' and inventory[index].name.lower() ==  'key 2' and inventory[index].name.lower() == 'key 3'):
+							if(inventory[index].name == 'Key 1' and inventory[index].name ==  'Key 2' and inventory[index].name == 'Key 3'):
 								inventory.pop(index)	# Removes the item at this index from the inventory.
 								self.locked = False
 								return [True, "You insert the 3 keys into the lock and twist. The door opens by itself.", inventory]

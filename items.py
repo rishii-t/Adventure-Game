@@ -41,56 +41,76 @@ class Item:
 	def handle_input(self, verb, noun1, noun2, inventory):
 		return [False, None, inventory]
 
+class Weapon(Item):
+	equip_description = "You should define flavor text for equipping this item in its subclass."
+	attack_descriptions = ["You should define one or more attack descriptions as a list in your subclass.", "This is an example secondary attack description"]
 
-class Pipe(Item):
-    def __init(self):
-        name = "Brass Pipe"
-        description = "A jagged brass pipe from a broken piping system."
-        dropped_description = "There is a pipe on the ground."
-        damage = 50
+	damage = 0		# Define this appropriately in your subclass.
 
+	def equip_text(self):
+		return self.equip_description
 
-
-
-class Knife(Item):
-    def __init(self):
-        name = "Knife"
-        description = "It's not an actual knife, instead its a jagged piece of metal you found in someones body."
-        dropped_description = "There is a knife on the ground."
-        damage = 50
+	def attack(self):
+		return [self.attack_descriptions[randint(0, len(self.attack_descriptions)-1)], self.damage]		# Return damage and a random attack description from your list.
 
 
-
-class DemogorganTeeth(Item):
-    def __init(self):
-        name = "Dem Teeth"
-        descirption = 'Teeth from a Domogorgon. Etching in the handle says "use Wordplays"'
-        dropped_description = "There are demogorgan teeth on the ground."
-        damage = 10
-
-
-class Gun(Item):
-    def __init(self):
-        name = "Snake Gun"
-        description = "Gun that shoots black worms that crawl into the enemies mouth. Proceeds to eat the inside of the enemy. Yum"
-        dropped_description = "There is a gun on the ground."
-        damage = 60
+class Pipe(Weapon):
+	def __init__(self):
+		name = "brass pipe"
+		description = "A jagged brass pipe from a broken piping system."
+		dropped_description = "There is a pipe on the ground."
+		equip_description = "You arm yourself with the rock."
+		attack_descriptions = ["You swing the rock as hard as you can. Crack!", "You wind up and chuck the rock at your enemy. Oof."]
+		damage = 50
 
 
-class OpSword(Item):
-    def __init(self):
-        name = "Ironically Op Sword"
-        description = "Read the name"
-        dropped_description = "There is a glowing sword on the ground."
-        damage = 1000000000000000
 
 
-class HandCannon(Item):
-    def __init(self):
-        name = "Hand Cannon"
-        description = "A cannon that was shrunk to fit a human hand"
-        dropped_description = "There is a huge gun on the ground."
-        damage = 90
+class Knife(Weapon):
+	def __init__(self):
+		name = "knife"
+		description = "It's not an actual knife, instead its a jagged piece of metal you found in someones body."
+		dropped_description = "There is a knife on the ground."
+		equip_description = "You arm yourself with the rock."
+		attack_descriptions = ["You swing the rock as hard as you can. Crack!", "You wind up and chuck the rock at your enemy. Oof."]
+		damage = 50
+
+
+
+class DemogorganTeeth(Weapon):
+		name = "dem tooth"
+		descirption = 'Teeth from a Domogorgon. Etching in the handle says "use Wordplays"'
+		dropped_description = "There are demogorgan teeth on the ground."
+		equip_description = "You arm yourself with the rock."
+		attack_descriptions = ["You swing the rock as hard as you can. Crack!", "You wind up and chuck the rock at your enemy. Oof."]
+		damage = 10
+
+
+class Gun(Weapon):
+		name = "gun"
+		description = "Gun that shoots black worms that crawl into the enemies mouth. Proceeds to eat the inside of the enemy. Yum"
+		dropped_description = "There is a gun on the ground."
+		equip_description = "You arm yourself with the rock."
+		attack_descriptions = ["You swing the rock as hard as you can. Crack!", "You wind up and chuck the rock at your enemy. Oof."]
+		damage = 60
+
+
+class OpSword(Weapon):
+		name = "Ironically Op Sword"
+		description = "Read the name"
+		dropped_description = "There is a glowing sword on the ground."
+		equip_description = "You arm yourself with the rock."
+		attack_descriptions = ["You swing the rock as hard as you can. Crack!", "You wind up and chuck the rock at your enemy. Oof."]
+		damage = 1000000000000000
+
+
+class HandCannon(Weapon):
+		name = "Hand Cannon"
+		description = "A cannon that was shrunk to fit a human hand"
+		dropped_description = "There is a huge gun on the ground."
+		equip_description = "You arm yourself with the rock."
+		attack_descriptions = ["You swing the rock as hard as you can. Crack!", "You wind up and chuck the rock at your enemy. Oof."]
+		damage = 90
 
 
 class Consumable(Item):
@@ -109,20 +129,23 @@ class EnergyDrink(Consumable):
 	consume_description = "You drink the Energy Drink."
 
 class Key1(Item):
-	name = "key 1"
+	name = "Key 1"
 	description = "1st aqcuirable key used"
 
 	def consume(self):
 		return [self.description]
 class Key2(Item):
-	name = "key 2"
+	name = "Key 2"
 	description = "2nd aqcuirable key"
 
 	def consume(self):
 		return [self.description]
 class Key3(Item):
-	name = "key 3"
+	name = "Key 3"
 	description = "3st aqcuirable key used"
 
 	def consume(self):
 		return [self.description]
+class Gold(Item):
+	name = "Gold"
+	description = "This shouldn't exist."
